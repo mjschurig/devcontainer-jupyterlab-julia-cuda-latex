@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  jupyterlab:
+    image: mcr.microsoft.com/devcontainers/base:ubuntu
+    stdin_open: true
+    tty: true
+    user: root
+    restart: unless-stopped
+    volumes:
+      - ../..:/workspaces:cached
+    environment:
+      JUPYTER_TOKEN: "Test1234!"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

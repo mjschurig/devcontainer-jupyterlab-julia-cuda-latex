@@ -1,0 +1,27 @@
+{
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "jupyterlab",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "postCreateCommand": "julia .devcontainer/julia-init.jl && bash .devcontainer/python-init.sh && jupyter lab",
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                "esbenp.prettier-vscode",
+                "ms-toolsai.jupyter",
+                "julialang.language-julia"
+            ]
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.12.1",
+            "additionalVersions": "3.11.9",
+            "installJupyterlab": "true",
+            "configureJupyterlabAllowOrigin": "*",
+            "useOryxIfAvailable": "false"
+        },
+        "ghcr.io/julialang/devcontainer-features/julia:1": {},
+        "ghcr.io/prulloac/devcontainer-features/latex:1": {}
+    }
+}
